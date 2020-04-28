@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
     private alertService: AlertService
   ) {
     this.btnName = 'START';
-    this.duplicateArr = ["12.967348,80.152687", "12.956010,80.143532", "12.945350, 80.129688"];
+    //this.duplicateArr = ["12.967348,80.152687", "12.956010,80.143532", "12.945350, 80.129688"];
   }
 
   ngOnInit() {
@@ -66,12 +66,13 @@ export class NavigationComponent implements OnInit {
       this.btnName = 'START';
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-          // this.currLat = position.coords.latitude;
-          // this.currLng = position.coords.longitude;
-          this.currLat = 12.922915;
-          this.currLng = 80.127457;
+          this.currLat = position.coords.latitude;
+          this.currLng = position.coords.longitude;
+        //   this.currLat = 12.922915;
+        //   this.currLng = 80.127457;
           localStorage.setItem('deslat', this.currLat);
           localStorage.setItem('deslng', this.currLng);
+          console.log(this.waypoint);
           localStorage.setItem('waypoint', JSON.stringify(this.waypoint));
           this.subscription.unsubscribe()
         });
@@ -88,14 +89,17 @@ export class NavigationComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.wayLat = position.coords.latitude;
         this.wayLng = position.coords.longitude;
+        this.waypointObj = { location: this.wayLat + "," + this.wayLng, stopover: true };
+        console.log(this.waypointObj);
+        this.waypoint.push(this.waypointObj);
+        console.log(this.waypoint);
       });
 
-      //this.waypointObj = { location: this.wayLat + "," + this.wayLng, stopover: true };
-      //this.waypoint.push(this.waypointObj);
-      this.duplicateArr.forEach(element => {
-        this.waypointObj = { location: element, stopover: true };
-        this.waypoint.push(this.waypointObj);
-      });
+     
+    //   this.duplicateArr.forEach(element => {
+    //     this.waypointObj = { location: element, stopover: true };
+    //     this.waypoint.push(this.waypointObj);
+    //   });
 
     }
     else {

@@ -10,8 +10,8 @@ import { from } from 'rxjs';
 export class MapviewComponent implements OnInit {
     //initial center position
     name = 'Angular 5';
-    lat: Number = 41.85;
-    lng: Number = -87.65;
+    lat: Number = 13.082680;
+    lng: Number = 80.270721;
     //google maps zoom
     zoom: Number = 6;
 
