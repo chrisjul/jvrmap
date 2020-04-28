@@ -1,0 +1,28 @@
+<style>
+    p {
+    font-family: Lato;
+  }
+  
+  agm-map {
+    height: 400px;
+  }
+  
+  
+  * {
+    font-family: Lato;
+  }
+  
+  a {
+    color: darkblue;
+  }
+  </style>
+  
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-direction *ngIf="dir" 
+    [waypoints]="dir.waypoints"
+    [origin]="dir.origin" 
+    [destination]="dir.destination">
+  
+    </agm-direction>
+  </agm-map>
+   

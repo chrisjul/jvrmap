@@ -1,0 +1,8 @@
+﻿<ul>
+    <li *ngFor="let user of users">
+        <span style="font-size:20px;">{{user.username}} - </span>
+        <span style="font-size:14px;">Completed {{totKM}}</span>
+        
+        - <a (click)="viewMap(user.id)" class="text-danger">View Map</a>
+    </li>
+</ul>
